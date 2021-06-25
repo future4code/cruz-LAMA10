@@ -7,10 +7,17 @@ export class TokenGeneratorMock implements IAuthenticator {
   };
 
   public getData(token: string) {
-    return {
-      id: "id_mock",
-      role: UserRole.NORMAL,
-    };
+    if (token === "admin") {
+      return {
+        id: "id_mock",
+        role: UserRole.ADMIN,
+      };
+    } else {
+      return {
+        id: "id_mock",
+        role: UserRole.NORMAL,
+      };
+    }
   }
 }
 

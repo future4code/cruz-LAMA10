@@ -13,7 +13,7 @@ export interface IUserDatabase {
 }
 
 export class UserDatabase extends BaseDatabase implements IUserDatabase {
-  private static TABLE_NAME = "";
+  private static TABLE_NAME = "lama_users";
 
   public async createUser(
     id: string,
