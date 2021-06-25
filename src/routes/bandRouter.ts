@@ -6,11 +6,11 @@ const bandRouter = express.Router();
 
 const bandController = new BandController();
 
-bandRouter.post("/signup", bandController.registerBand);
-bandRouter.post("/login", bandController.bandById);
+bandRouter.post("/register", bandController.registerBand);
+bandRouter.get("/", bandController.getBand);
 
 const bandHandle: AppRoutes = {
-  path: "/users",
+  path: "/bands",
   handle: bandRouter,
 };
 
