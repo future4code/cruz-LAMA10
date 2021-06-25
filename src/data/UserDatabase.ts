@@ -1,8 +1,18 @@
 import { BaseDatabase } from "./BaseDatabase";
 import { User } from "../model/User";
 
-export class UserDatabase extends BaseDatabase {
+export interface IUserDatabase {
+  createUser(
+    id: string,
+    email: string,
+    name: string,
+    password: string,
+    role: string
+  ): Promise<void>;
+  getUserByMail(email: string): Promise<User>;
+}
 
+export class UserDatabase extends BaseDatabase implements IUserDatabase {
   private static TABLE_NAME = "";
 
   public async createUser(
@@ -19,7 +29,7 @@ export class UserDatabase extends BaseDatabase {
           email,
           name,
           password,
-          role
+          role,
         })
         .into(UserDatabase.TABLE_NAME);
     } catch (error) {
@@ -27,7 +37,7 @@ export class UserDatabase extends BaseDatabase {
     }
   }
 
-  public async getUserByEmail(email: string): Promise<User> {
+  public async getUserByMail(email: string): Promise<User> {
     const result = await this.getConnection()
       .select("*")
       .from(UserDatabase.TABLE_NAME)
@@ -35,5 +45,4 @@ export class UserDatabase extends BaseDatabase {
 
     return User.toUserModel(result[0]);
   }
-
 }
