@@ -1,4 +1,4 @@
-import { IIdGenerator } from "../../src/services/IdGenerator";
+import { IIdGenerator } from "../../../src/services/IdGenerator";
 
 export class IdGeneratorMock implements IIdGenerator {
   public generate(): string {

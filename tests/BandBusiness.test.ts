@@ -1,7 +1,7 @@
 import { BandBusiness } from "../src/business/band/BandBusiness";
-import { BandDatabaseMock } from "./mocks/BandDatabaseMock";
-import { TokenGeneratorMock } from "./mocks/tokenGeneratorMock";
-import { IdGeneratorMock } from "./mocks/idGeneratorMock";
+import { BandDatabaseMock } from "./mocks/data/BandDatabaseMock";
+import { TokenGeneratorMock } from "./mocks/services/tokenGeneratorMock";
+import { IdGeneratorMock } from "./mocks/services/idGeneratorMock";
 import { BandInputDTO, Band } from "../src/model/Band";
 import { bandMock } from "./mocks/bandMock";
 

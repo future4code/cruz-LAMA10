@@ -1,8 +1,8 @@
 import { UserBusiness } from "../src/business/user/UserBusiness";
-import idGeneratorMock from "./mocks/idGeneratorMock";
-import hashGeneratorMock from "./mocks/hashGeneratorMock";
-import tokenGeneratorMock from "./mocks/tokenGeneratorMock";
-import userDatabaseMock from "./mocks/UserDatabaseMock";
+import idGeneratorMock from "./mocks/services/idGeneratorMock";
+import hashGeneratorMock from "./mocks/services/hashGeneratorMock";
+import tokenGeneratorMock from "./mocks/services/tokenGeneratorMock";
+import userDatabaseMock from "./mocks/data/UserDatabaseMock";
 import { LoginInputDTO, UserInputDTO } from "../src/model/User";
 
 const userBusinessMock = new UserBusiness(
