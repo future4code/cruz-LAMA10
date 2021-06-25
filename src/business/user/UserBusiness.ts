@@ -1,18 +1,24 @@
-import { UserInputDTO, LoginInputDTO } from "../model/User";
-import { IUserDatabase } from "../data/UserDatabase";
-import { IIdGenerator } from "../services/IdGenerator";
-import { IAuthenticator } from "../services/Authenticator";
-import { IHashManager } from "../services/HashManager";
+import { UserInputDTO, LoginInputDTO } from "../../model/User";
+import userDatabase, { IUserDatabase } from "../../data/UserDatabase";
+import idGenerator, { IIdGenerator } from "../../services/IdGenerator";
+import authenticator, { IAuthenticator } from "../../services/Authenticator";
+import hashGenerator, { IHashManager } from "../../services/HashManager";
+import { CustomError } from "../../error/CustomError";
+import { UserValidations } from "./UserValidations";
 
-export class UserBusiness {
+export class UserBusiness extends UserValidations {
   constructor(
     private authenticator: IAuthenticator,
     private hashManager: IHashManager,
     private idGenerator: IIdGenerator,
     private userDatabase: IUserDatabase
-  ) {}
+  ) {
+    super();
+  }
 
-  async createUser(user: UserInputDTO) {
+  async signUp(user: UserInputDTO) {
+    this.validateData(user);
+
     const id = this.idGenerator.generate();
 
     const hashPassword = this.hashManager.hash(user.password);
@@ -33,13 +39,20 @@ export class UserBusiness {
     return accessToken;
   }
 
-  async getUserByEmail(user: LoginInputDTO) {
+  async login(user: LoginInputDTO) {
     const userFromDB = await this.userDatabase.getUserByMail(user.email);
+    if (!userFromDB) {
+      throw new CustomError("Invalid credentials", 401);
+    }
 
     const hashCompare = this.hashManager.compare(
       user.password,
       userFromDB.getPassword()
     );
+
+    if (!hashCompare) {
+      throw new CustomError("Invalid credentials", 401);
+    }
 
     const accessToken = this.authenticator.generateToken({
       id: userFromDB.getId(),
@@ -53,3 +66,10 @@ export class UserBusiness {
     return accessToken;
   }
 }
+
+export default new UserBusiness(
+  authenticator,
+  hashGenerator,
+  idGenerator,
+  userDatabase
+);

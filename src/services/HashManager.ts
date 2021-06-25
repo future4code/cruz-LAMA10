@@ -17,3 +17,4 @@ export class HashManager implements IHashManager {
     return bcrypt.compareSync(text, hash);
   }
 }
+export default new HashManager();
