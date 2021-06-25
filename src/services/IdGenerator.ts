@@ -10,4 +10,4 @@ export class IdGenerator implements IIdGenerator {
   }
 }
 
-// Um CONTRATO é um conjunto de regras e o IMPLEMENTS é o cumprir o contrato.
+export default new IdGenerator();

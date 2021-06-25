@@ -9,7 +9,7 @@ export interface IUserDatabase {
     password: string,
     role: string
   ): Promise<void>;
-  getUserByMail(email: string): Promise<User>;
+  getUserByMail(email: string): Promise<User | undefined>;
 }
 
 export class UserDatabase extends BaseDatabase implements IUserDatabase {
@@ -37,12 +37,18 @@ export class UserDatabase extends BaseDatabase implements IUserDatabase {
     }
   }
 
-  public async getUserByMail(email: string): Promise<User> {
+  public async getUserByMail(email: string): Promise<User | undefined> {
     const result = await this.getConnection()
       .select("*")
       .from(UserDatabase.TABLE_NAME)
       .where({ email });
 
+    if (!result[0]) {
+      return undefined;
+    }
+
     return User.toUserModel(result[0]);
   }
 }
+
+export default new UserDatabase();
