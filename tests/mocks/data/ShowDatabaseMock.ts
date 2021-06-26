@@ -1,5 +1,5 @@
 import { IShowDatabase } from "../../../src/data/ShowDatabase";
-import { Show, ShowDataDTO } from "../../../src/model/Show";
+import { ShowDataDTO } from "../../../src/model/Show";
 
 export class ShowDatabaseMock implements IShowDatabase {
   public async createShow(data: ShowDataDTO): Promise<any> {}
