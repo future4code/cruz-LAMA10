@@ -119,7 +119,7 @@ describe("BandBusiness", () => {
         const band = await bandBusiness.getBandBy("id_mock");
 
         expect(band).toBeInstanceOf(Band);
-        expect(band).toContain(bandMock);
+        expect(band).toContainEqual(bandMock);
       } catch (error) {
         console.log(error);
       }
@@ -131,7 +131,7 @@ describe("BandBusiness", () => {
         const band = await bandBusiness.getBandBy(undefined, "Queen");
 
         expect(band).toBeInstanceOf(Band);
-        expect(band).toContain(bandMock);
+        expect(band).toContainEqual(bandMock);
       } catch (error) {
         console.log(error);
       }
