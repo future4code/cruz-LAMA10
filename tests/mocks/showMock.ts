@@ -1,4 +1,4 @@
-import { Show, WeekDay } from "../../../src/model/Show";
+import { Show, WeekDay } from "../../src/model/Show";
 
 export const showMock = new Show(
   "id_mock",

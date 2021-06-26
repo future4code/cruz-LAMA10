@@ -1,4 +1,4 @@
-import { IHashManager } from "../../src/services/HashManager";
+import { IHashManager } from "../../../src/services/HashManager";
 
 export class HashGeneratorMock implements IHashManager {
   public hash = (s: string): string => {

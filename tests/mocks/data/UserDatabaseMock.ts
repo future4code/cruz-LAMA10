@@ -1,6 +1,6 @@
-import { User } from "../../src/model/User";
-import { userMockAdm, userMockNormal } from "./userMock";
-import { IUserDatabase } from "../../src/data/UserDatabase";
+import { User } from "../../../src/model/User";
+import { userMockAdm, userMockNormal } from "../userMock";
+import { IUserDatabase } from "../../../src/data/UserDatabase";
 
 export class UserDatabaseMock implements IUserDatabase {
   public async createUser(
