@@ -1,6 +1,6 @@
-import { IBandDatabase } from "../../src/data/BandDatabase";
-import { Band, BandToDB } from "../../src/model/Band";
-import { bandMock } from "./bandMock";
+import { IBandDatabase } from "../../../src/data/BandDatabase";
+import { Band, BandToDB } from "../../../src/model/Band";
+import { bandMock } from "../bandMock";
 
 export class BandDatabaseMock implements IBandDatabase {
   public async insertBand(band: BandToDB) {}

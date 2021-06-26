@@ -1,5 +1,5 @@
-import { UserRole } from "../../src/model/User";
-import { IAuthenticator } from "../../src/services/Authenticator";
+import { UserRole } from "../../../src/model/User";
+import { IAuthenticator } from "../../../src/services/Authenticator";
 
 export class TokenGeneratorMock implements IAuthenticator {
   public generateToken = (input: AuthenticationData): string => {
