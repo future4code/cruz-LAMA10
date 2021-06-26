@@ -1,8 +1,8 @@
 import { ShowBusiness } from "../src/business/show/ShowBusiness";
 import { ShowInputDTO } from "../src/model/Show";
-import idGeneratorMock from "./mocks/idGeneratorMock";
-import showDatabaseMock from "./mocks/show/ShowDatabaseMock";
-import tokenGeneratorMock from "./mocks/tokenGeneratorMock";
+import idGeneratorMock from "./mocks/services/idGeneratorMock";
+import showDatabaseMock from "./mocks/data/ShowDatabaseMock";
+import tokenGeneratorMock from "./mocks/services/tokenGeneratorMock";
 
 const showBusinessMock = new ShowBusiness(
   tokenGeneratorMock,
