@@ -2,7 +2,7 @@ import * as jwt from "jsonwebtoken";
 
 export interface IAuthenticator {
   generateToken(input: AuthenticationData, expiresIn?: string): string;
-  getData(token: string): AuthenticationData;
+  getTokenData(token: string): AuthenticationData;
 }
 
 export class Authenticator implements IAuthenticator {
@@ -23,7 +23,7 @@ export class Authenticator implements IAuthenticator {
     return token;
   }
 
-  public getData(token: string): AuthenticationData {
+  public getTokenData(token: string): AuthenticationData {
     const payload = jwt.verify(token, process.env.JWT_KEY as string) as any;
     const result = {
       id: payload.id,
