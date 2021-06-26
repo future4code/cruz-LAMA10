@@ -6,7 +6,7 @@ export class TokenGeneratorMock implements IAuthenticator {
     return "token_mock";
   };
 
-  public getData(token: string) {
+  public getTokenData(token: string) {
     return {
       id: "id_mock",
       role: UserRole.NORMAL,

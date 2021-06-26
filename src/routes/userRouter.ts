@@ -6,11 +6,11 @@ const userRouter = express.Router();
 
 const userController = new UserController();
 
-userRouter.post("/signup", userController.signup);
+userRouter.post("/signup", userController.signUp);
 userRouter.post("/login", userController.login);
 
 const userHandle: AppRoutes = {
-  path: "/user",
+  path: "/users",
   handle: userRouter,
 };
 
