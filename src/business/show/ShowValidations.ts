@@ -9,7 +9,7 @@ export class ShowValidations {
   }
 
   private validateRangeTime(startTime: number, endTime: number) {
-    if (startTime < 8 || endTime > 23) {
+    if (startTime < 8 || startTime > 22 || endTime < 9 || endTime > 23) {
       throw new CustomError("Range time invalid", 422);
     }
   }
