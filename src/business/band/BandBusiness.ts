@@ -18,7 +18,7 @@ export class BandBusiness extends BandValidation {
     if (!token) throw new CustomError("Token is missing", 401);
     this.validateIfEmptyFields(input);
 
-    const { role } = this.authenticator.getData(token);
+    const { role } = this.authenticator.getTokenData(token);
 
     if (!role || role !== "ADMIN") {
       throw new CustomError("Operation requires permission", 403);

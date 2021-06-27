@@ -28,7 +28,9 @@ describe("UserBusiness", () => {
         await userBusinessMock.signUp(data);
       } catch (error) {
         expect(error.statusCode).toBe(422);
-        expect(error.message).toBe("Missing input");
+        expect(error.message).toBe(
+          "All fields must be filled: 'email', 'name', 'password' and 'role'"
+        );
       }
     });
 
@@ -64,7 +66,9 @@ describe("UserBusiness", () => {
         await userBusinessMock.signUp(data);
       } catch (error) {
         expect(error.statusCode).toBe(422);
-        expect(error.message).toBe("Invalid password");
+        expect(error.message).toBe(
+          "The password must have at least six characters with at least one lowercase letter, one uppercase letter, one number and one special character"
+        );
       }
     });
 

@@ -4,7 +4,10 @@ import { UserInputDTO, UserRole } from "../../model/User";
 export class UserValidations {
   private validateIfEmptyFields({ email, name, password, role }: UserInputDTO) {
     if (!email || !name || !password || !role) {
-      throw new CustomError("Missing input", 422);
+      throw new CustomError(
+        "All fields must be filled: 'email', 'name', 'password' and 'role'",
+        422
+      );
     }
   }
 
@@ -19,7 +22,10 @@ export class UserValidations {
     const passwordRegex =
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{6,}$/;
     if (!passwordRegex.test(password)) {
-      throw new CustomError("Invalid password", 422);
+      throw new CustomError(
+        "The password must have at least six characters with at least one lowercase letter, one uppercase letter, one number and one special character",
+        422
+      );
     }
   }
 
