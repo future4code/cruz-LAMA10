@@ -1,0 +1,26 @@
+CREATE TABLE lama_bands (
+  id VARCHAR(255) PRIMARY KEY,
+  name VARCHAR(255) UNIQUE NOT NULL,
+  music_genre VARCHAR(255) NOT NULL,
+  responsible VARCHAR(255) UNIQUE NOT NULL 
+);
+
+CREATE TABLE lama_shows (
+  id VARCHAR(255) PRIMARY KEY,
+  date VARCHAR(255) NOT NULL,
+  week_day ENUM("sexta", "sabado", "domingo") NOT NULL,
+  start_time INT NOT NULL,
+  end_time INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  band_id VARCHAR(255) NOT NULL,
+  FOREIGN KEY(band_id) REFERENCES lama_bands(id)
+);
+
+CREATE TABLE  lama_users (
+  id VARCHAR(255) PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  role VARCHAR(255) NOT NULL DEFAULT "NORMAL"
+)
+
